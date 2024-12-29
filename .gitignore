@@ -1,0 +1,35 @@
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Node modules and build artifacts
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json  # Keep VSCode extensions configuration
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environment variables
+.env
+
+# Optional: Ignore compiled JavaScript (if using TypeScript)
+# *.js
+# *.jsx
+
+# Optional: Ignore test output directories (if applicable)
+# coverage/

@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap");
+
+body {
+  font-family: "Sora" sans-serif;
+  font-weight: 400;
+}
+
+/* Add this CSS to your styles */
+/* Add this CSS to your styles */
+/* Add this CSS to your styles */
+.loader {
+  border: 12px solid rgba(243, 244, 246, 0.6); /* Light grey with transparency */
+  border-top: 12px solid #3b82f6; /* Blue */
+  border-radius: 50%;
+  width: 120px; /* Size of the spinner */
+  height: 120px; /* Size of the spinner */
+  animation: spin 1.5s linear infinite; /* Faster spin animation */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1),
+    /* Subtle shadow for depth */ inset 0 0 10px rgba(255, 255, 255, 0.3); /* Inner glow effect */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.Register {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+}
+
+.Register input {
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+
+.Register button {
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 150px;
+}
+
+.Register h1 {
+  color: #3b82f6;
+}
+
+.Login {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+}
+
+.Login input {
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+
+.Login button {
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  /* width: 400px; */
+}
+
+.Login h1 {
+  color: #3b82f6;
+}
+
+.Login h4 {
+  color: #3b82f6;
+}
+
+.Register h4 {
+  color: #3b82f6;
+}
+
+.register-form {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+  border-radius: 10px;
+  padding: 2rem;
+  background-color: rgba(243, 244, 246, 0.6);
+  border: 1px solid #70ee9c;
+}
+
+.Register h1 {
+  text-align: center;
+  background: #70ee9c;
+  padding: 10px 0px 10px 0px;
+  border-radius: 10px 10px 0px 0px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.Register h4 {
+  text-align: center;
+}
+
+.table-row {
+  background-color: #f9f9f9; /* Light gray background for rows */
+}
+
+.table-row:hover {
+  background-color: #e6f7ff; /* Light blue on hover */
+}
+
+.ant-modal-header {
+  background-color: #1890ff; /* Header background color */
+  color: white; /* Header text color */
+}
+
+.ant-modal-title {
+  font-weight: bold; /* Bold title */
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
