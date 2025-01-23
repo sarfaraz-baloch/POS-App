@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const connectDB = require("./config/config");
 const { bgGreen } = require("colors");
+const { all } = require("./routes/itemRoute");
 require("colors");
 
 //config
@@ -13,6 +14,15 @@ dotenv.config();
 //rest obj
 const app = express();
 connectDB();
+
+const corsOptions = {
+  origin: process.env.CLIENT_URL,
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  // credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 //middlewares
 app.use(cors());
