@@ -97,6 +97,9 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build", "index.html"));
 });
 
+console.log("Path module loaded successfully:", path);
+console.log("Build directory path:", path.join(__dirname, "client/build"));
+
 // Listen
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
