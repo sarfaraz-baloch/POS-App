@@ -36,6 +36,16 @@ app.use("/api/item", require("./routes/itemRoute"));
 app.use("/api/user", require("./routes/userRoute"));
 app.use("/api/bill", require("./routes/billRoute"));
 
+// Serve static files from React app
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client/build")));
+
+  // Catch-all route to send all requests to React's index.html (client-side routing)
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  });
+}
+
 //listen
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
