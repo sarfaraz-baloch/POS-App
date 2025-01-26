@@ -1,4 +1,4 @@
-import DefultLayout from "../Componets/DefualtLayout";
+// import DefultLayout from "../Componets/DefualtLayout";
 // import { useEffect, useState } from "react";
 // import { useDispatch } from "react-redux";
 // import { Row, Col } from "antd";
