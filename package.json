@@ -4,7 +4,7 @@
   "description": "Final hekhton",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "npm install --omit=dev && node server.js",
     "serve": "nodemon server.js",
     "client": "npm run dev --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
