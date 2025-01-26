@@ -61,7 +61,7 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: "*",
-    credentials: true,
+    // credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
@@ -74,12 +74,21 @@ app.use(
 //   res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
 // });
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client/dist"))); // Serve static files from dist
-  // console.log("===>", __dirname);
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static(path.join(__dirname, "client/dist"))); // Serve static files from dist
+//   // console.log("===>", __dirname);
 
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "client/dist", "index.html")); // Serve index.html for all routes
+//   });
+// }
+if (process.env.NODE_ENV === "production") {
+  // Use path.resolve() to resolve the absolute path to the 'dist' folder correctly
+  app.use(express.static(path.resolve(__dirname, "client", "dist"))); // Serve static files from dist
+
+  // Catch-all route to serve the index.html for all routes in production
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client/dist", "index.html")); // Serve index.html for all routes
+    res.sendFile(path.resolve(__dirname, "client", "dist", "index.html")); // Serve index.html for all routes
   });
 }
 
@@ -91,4 +100,9 @@ app.use("/api", loanRoutes); // This could be '/api/item' if you want it in that
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server Running on ${PORT}`.bgCyan.white.bold);
+  console.log(
+    "Serving static files from:",
+    path.join(__dirname, "client/dist")
+  );
+  console.log("Environment:", process.env.NODE_ENV);
 });
