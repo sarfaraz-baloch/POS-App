@@ -84,7 +84,7 @@ app.use(
 // }
 if (process.env.NODE_ENV === "production") {
   // Use path.resolve() to resolve the absolute path to the 'dist' folder correctly
-  app.use(express.static(path.resolve(__dirname, "client", "dist"))); // Serve static files from dist
+  app.use(express.static(path.resolve(__dirname, "client/dist"))); // Serve static files from dist
 
   // Catch-all route to serve the index.html for all routes in production
   app.get("*", (req, res) => {
