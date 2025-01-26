@@ -4,14 +4,13 @@
   "description": "pos mern app",
   "main": "server.js",
   "scripts": {
-  "start": "node server.js",
-  "serve": "nodemon server.js",
-  "client": "npm run dev --prefix client",
-  "dev": "concurrently \"npm run server\" \"npm run client\"",
-  "server": "nodemon server.js",
-  "seed": "node seeder.js"
-}
-,
+    "start": "node server.js",
+    "serve": "nodemon server.js",
+    "client": "npm run dev --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "nodemon server.js",
+    "seed": "node seeder.js"
+  },
   "author": "sarfarazFida",
   "license": "MIT",
   "dependencies": {

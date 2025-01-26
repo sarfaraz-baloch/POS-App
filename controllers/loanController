@@ -1,0 +1,22 @@
+const LoanRequest = require("../models/LoanRequest");
+
+const createLoanRequest = async (req, res) => {
+  try {
+    const loan = new LoanRequest(req.body);
+    await loan.save();
+    res.status(201).json(loan);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to create loan request." });
+  }
+};
+
+const getLoanRequests = async (req, res) => {
+  try {
+    const loans = await LoanRequest.find();
+    res.status(200).json(loans);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch loan requests." });
+  }
+};
+
+module.exports = { createLoanRequest, getLoanRequests }; // Replace export

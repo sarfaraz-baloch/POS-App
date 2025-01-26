@@ -50,7 +50,9 @@ const DefaultLayout = ({ children }) => {
         collapsed={collapsed}
       >
         <div className="demo-logo-vertical" />
-        <h1 className="logo text-4xl pt-2 text-white text-center">Pos</h1>
+        <h1 className="logo text-xl pt-2 p-4 text-white text-center">
+          Saylani Microfinance
+        </h1>
         <Menu
           className="mt-5 text-xl"
           theme="dark"

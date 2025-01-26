@@ -31,7 +31,27 @@ const registerController = async (req, res) => {
   }
 };
 
+const getAllUsersController = async (req, res) => {
+  try {
+    // Find all users in the database
+    const users = await userModel.find(); // This will return all users in the collection
+
+    if (users.length > 0) {
+      // If users exist, return them
+      res.status(200).json(users);
+    } else {
+      // If no users found
+      res.status(404).json({ message: "No users found" });
+    }
+  } catch (error) {
+    // Catch any error that occurs and send it back
+    console.log(error);
+    res.status(500).json({ message: "Server Error", error });
+  }
+};
+
 module.exports = {
   loginController,
   registerController,
+  getAllUsersController,
 };

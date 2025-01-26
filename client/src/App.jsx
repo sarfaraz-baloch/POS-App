@@ -15,6 +15,7 @@ import Register from "./Pages/Register";
 import Login from "./Pages/Login";
 import CustomerPage from "./Pages/CustomerPage";
 import BillPage from "./Pages/BillPage";
+import PopPage from "./Pages/PopPage";
 
 function App() {
   return (
@@ -50,6 +51,7 @@ const MainRoutes = () => {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/bill" element={<BillPage />} />
             <Route path="/customer" element={<CustomerPage />} />
+            <Route path="/pop" element={<PopPage />} />
             {/* Add more routes here that should use DefaultLayout */}
           </Routes>
         </DefaultLayout>

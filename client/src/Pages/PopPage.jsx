@@ -1,12 +1,18 @@
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, Form, Input, message, Modal, Select, Table } from "antd";
-const ItemPage = () => {
+const PopPage = () => {
+  const location = useLocation();
+  const item = location.state?.item; // Access the item passed via state
+
   const [itemsData, setItemsData] = useState([]);
   const [popModal, setPopModal] = useState(false);
   const [editItem, setEditItem] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [subcategories, setSubcategories] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -36,6 +42,19 @@ const ItemPage = () => {
   //
 
   //form submit
+
+  const handleCategoryChange = (value) => {
+    setSelectedCategory(value);
+    setSubcategories(categorySubcategories[value] || []);
+  };
+
+  const categorySubcategories = {
+    "Wedding Loans": ["Gold Loan", "Personal Loan"],
+    "Home Construction Loans": ["Material Loan", "Labor Loan"],
+    "Business Startup Loans": ["Seed Funding", "Equipment Loan"],
+    "Education Loans": ["Scholarship Loan", "Tuition Loan"],
+  };
+
   const handleSubmit = async (values) => {
     if (editItem === null) {
       try {
@@ -175,83 +194,91 @@ const ItemPage = () => {
   ];
 
   return (
-    <div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <h1 style={{ fontSize: "30px", fontWeight: "bold" }}>Item Page</h1>
-        <Button
-          type="primary"
-          className="primary-button p-4"
-          onClick={() => setPopModal(true)}
-        >
-          Add Item
-        </Button>
+    <div className="flex   p-4">
+      <div>
+        <h1>{item?.name}</h1>
+        <p>Maximum loan:Lakh {item?.price}</p>
+        <img src={item?.image} alt={item?.name} style={{ maxWidth: "300px" }} />
       </div>
-      <Table bordered columns={colums} dataSource={itemsData} />
 
-      {popModal && (
-        <Modal
-          title={`${editItem !== null ? "Edit" : "Add"} Item`}
-          visible={popModal}
-          onCancel={() => {
-            setEditItem(null);
-            setPopModal(false);
+      <div className="ml-4 border-2 border-gray-600 w-full flex  p-4">
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
           }}
-          footer={false}
         >
-          <Form
-            layout="vertical"
-            initialValues={editItem}
-            onFinish={handleSubmit}
+          {/* <h1 style={{ fontSize: "30px", fontWeight: "bold" }}>Item Page</h1> */}
+          <Button
+            type="primary"
+            className="primary-button p-4"
+            onClick={() => setPopModal(true)}
           >
-            <Form.Item name="name" label="Name">
-              <Input />
-            </Form.Item>
+            Add Item
+          </Button>
+        </div>
+        {/* <Table bordered columns={colums} dataSource={itemsData} /> */}
 
-            <Form.Item name="price" label="Price">
-              <Input />
-            </Form.Item>
+        {popModal && (
+          <Modal
+            visible={popModal}
+            onCancel={() => {
+              setEditItem(null);
+              setPopModal(false);
+            }}
+            footer={false}
+          >
+            <Form
+              layout="vertical"
+              initialValues={editItem}
+              onFinish={handleSubmit}
+            >
+              <Form.Item name="name" label="Name">
+                <Input />
+              </Form.Item>
 
-            <Form.Item name="image" label="Image URL">
-              <Input />
-            </Form.Item>
+              <Form.Item name="price" label="Price">
+                <Input />
+              </Form.Item>
 
-            {/* <Form.Item name="category" label="category">
-            <Input />
-          </Form.Item> */}
+              <Form.Item name="image" label="Image URL">
+                <Input />
+              </Form.Item>
 
-            <Form.Item name="category" label="Category">
-              <Select>
-                <Select.Option value="Wedding Loans">
-                  Wedding Loans
-                </Select.Option>
-                <Select.Option value="Home Construction Loans">
-                  Home Construction Loans
-                </Select.Option>
-                <Select.Option value="Business Startup Loans">
-                  Business Startup Loans
-                </Select.Option>
-                <Select.Option value="Education Loans">
-                  Education Loans
-                </Select.Option>
-              </Select>
-            </Form.Item>
+              <Form.Item name="category" label="Category">
+                <Select onChange={handleCategoryChange}>
+                  {Object.keys(categorySubcategories).map((category) => (
+                    <Select.Option key={category} value={category}>
+                      {category}
+                    </Select.Option>
+                  ))}
+                </Select>
+              </Form.Item>
 
-            <div style={{ display: "flex", justifyContent: "end" }}>
-              <Button type="primary" htmlType="submit">
-                Save
-              </Button>
-            </div>
-          </Form>
-        </Modal>
-      )}
+              {selectedCategory && (
+                <Form.Item name="subcategory" label="Subcategory">
+                  <Select>
+                    {subcategories.map((subcategory) => (
+                      <Select.Option key={subcategory} value={subcategory}>
+                        {subcategory}
+                      </Select.Option>
+                    ))}
+                  </Select>
+                </Form.Item>
+              )}
+
+              <div style={{ display: "flex", justifyContent: "end" }}>
+                <Button type="primary" htmlType="submit">
+                  Save
+                </Button>
+              </div>
+            </Form>
+          </Modal>
+        )}
+      </div>
     </div>
   );
 };
 
-export default ItemPage;
+export default PopPage;
