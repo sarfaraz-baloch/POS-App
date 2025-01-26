@@ -21,7 +21,7 @@ const ItemPage = () => {
       });
 
       const { data } = await axios.get(
-        "http://localhost:8080/api/item/get-item"
+        "https://pos-app-production.up.railway.app/api/item/get-item"
       );
       setItemsData(data);
       console.log("data in item==>", data);
@@ -44,7 +44,7 @@ const ItemPage = () => {
         });
 
         const res = await axios.post(
-          "http://localhost:8080/api/item/add-item",
+          "https://pos-app-production.up.railway.app/api/item/add-item",
           values
         );
 
@@ -68,10 +68,13 @@ const ItemPage = () => {
           type: "SHOW_LOADING",
         });
 
-        await axios.put("http://localhost:8080/api/item/edit-item", {
-          ...values,
-          itemId: editItem._id,
-        });
+        await axios.put(
+          "https://pos-app-production.up.railway.app/api/item/edit-item",
+          {
+            ...values,
+            itemId: editItem._id,
+          }
+        );
         message.success("Item Updated Successfully");
         getAllItems();
         setPopModal(false);
@@ -94,9 +97,12 @@ const ItemPage = () => {
         type: "SHOW_LOADING",
       });
 
-      await axios.post("http://localhost:8080/api/item/delete-item", {
-        itemId: record._id,
-      });
+      await axios.post(
+        "https://pos-app-production.up.railway.app/api/item/delete-item",
+        {
+          itemId: record._id,
+        }
+      );
 
       message.success("Item Deleted Successfully");
       getAllItems();

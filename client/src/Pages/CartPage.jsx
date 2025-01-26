@@ -125,7 +125,10 @@ const CartPage = () => {
         userId: JSON.parse(localStorage.getItem("auth"))._id,
       };
 
-      await axios.post("http://localhost:8080/api/bill/add-bill", newObj);
+      await axios.post(
+        "https://pos-app-production.up.railway.app/api/bill/add-bill",
+        newObj
+      );
       message.success("Bill Generted");
       navigate("/bill");
     } catch (error) {

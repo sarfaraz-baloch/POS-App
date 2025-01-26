@@ -17,7 +17,7 @@ const CustomerPage = () => {
       });
 
       const { data } = await axios.get(
-        "http://localhost:8080/api/bill/get-bill"
+        "https://pos-app-production.up.railway.app/api/bill/get-bill"
       );
       setBillsData(data);
       console.log("data in item==>", data);

@@ -69,22 +69,6 @@ app.use(
   })
 );
 
-// / Serve static files from the React app (or any frontend build)
-// app.use(express.static(path.join(__dirname, "client/dist")));
-
-// // Catch-all route for serving the frontend
-// app.get("*", (req, res) => {
-//   res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
-// });
-
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static(path.join(__dirname, "client/dist"))); // Serve static files from dist
-//   // console.log("===>", __dirname);
-
-//   app.get("*", (req, res) => {
-//     res.sendFile(path.join(__dirname, "client/dist", "index.html")); // Serve index.html for all routes
-//   });
-// }
 if (process.env.NODE_ENV === "production") {
   // Use path.resolve() to resolve the absolute path to the 'dist' folder correctly
   app.use(express.static(path.resolve(__dirname, "client", "dist"))); // Serve static files from dist
