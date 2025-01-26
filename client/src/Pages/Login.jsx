@@ -33,7 +33,7 @@ const Login = () => {
         type: "STOP_LOADING",
       });
       console.log(error);
-      message.error("Failed to add item");
+      message.error("Failed to login user");
     }
   };
 
