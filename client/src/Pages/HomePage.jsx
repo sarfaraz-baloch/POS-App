@@ -33,7 +33,7 @@ const HomePage = () => {
         });
 
         const { data } = await axios.get(
-          "http://localhost:8080/api/item/get-item"
+          "https://pos-app-production.up.railway.app/api/item/get-item"
         );
         setItemsData(data);
 
