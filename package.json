@@ -1,8 +1,9 @@
 {
-  "name": "pos-mern",
+  "name": "MicroFinance",
   "version": "1.0.0",
-  "description": "pos mern app",
+  "description": "Final hekhton",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "node server.js",
     "serve": "nodemon server.js",

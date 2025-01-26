@@ -1,4 +1,5 @@
 // const express = require("express");
+// import App from "./client/src/App";
 // const morgan = require("morgan");
 // const cors = require("cors");
 // const dotenv = require("dotenv");
@@ -51,6 +52,15 @@ connectDB();
 app.use(cors());
 app.use(express.json()); // Just this one is enough
 app.use(morgan("dev"));
+
+app.use(cookieParser());
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
 
 app.use("/api/item", require("./routes/itemRoute"));
 app.use("/api/user", require("./routes/userRoute"));
