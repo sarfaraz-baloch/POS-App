@@ -15,7 +15,7 @@ const Login = () => {
       });
 
       const res = await axios.post(
-        "http://localhost:8080/api/user/login",
+        "https://pos-app-production.up.railway.app/api/user/login", // Change this to your server
         values
       );
 

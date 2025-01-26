@@ -14,7 +14,8 @@ const Register = () => {
       });
 
       await axios.post(
-        `${process.env.REACT_APP_API_URL}/user/register`,
+        `https://pos-app-production.up.railway.app/api/user/register`, // Change this to your server
+
         values
       );
 
