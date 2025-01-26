@@ -42,12 +42,14 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 const connectDB = require("./config/config");
+const path = require("path");
 const { bgGreen } = require("colors");
 const loanRoutes = require("./routes/loanRoutes");
 
 dotenv.config();
 
 const app = express();
+// const __dirname = path.resolve();
 connectDB();
 
 app.use(cors());
@@ -62,6 +64,14 @@ app.use(
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
+
+// / Serve static files from the React app (or any frontend build)
+app.use(express.static(path.join(__dirname, "client", "build")));
+
+// Catch-all route for serving the frontend
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+});
 
 app.use("/api/item", require("./routes/itemRoute"));
 app.use("/api/user", require("./routes/userRoute"));
