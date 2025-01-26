@@ -6,13 +6,14 @@ import { useSelector, useDispatch } from "react-redux";
 const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const server = "pos-app-production.up.railway.app";
   const handleSubmit = async (values) => {
     try {
       dispatch({
         type: "SHOW_LOADING",
       });
 
-      await axios.post("http://localhost:8080/api/user/register", values);
+      await axios.post(`${server}/api/user/register`, values);
 
       message.success("User Registered Successfully");
       dispatch({
@@ -36,7 +37,7 @@ const Register = () => {
   return (
     <div className="Register flex items-center justify-center flex-col  h-screen bg-gray-100">
       <div className="register-form">
-        <h1 className="text-3xl">Pos App</h1>
+        <h1 className="text-3xl">Microfinance</h1>
         <h4 className="text-3xl">Register</h4>
 
         <Form layout="vertical" onFinish={handleSubmit}>
