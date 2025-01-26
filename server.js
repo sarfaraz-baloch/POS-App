@@ -50,6 +50,7 @@ dotenv.config();
 
 const app = express();
 // const __dirname = path.resolve();
+console.log(__dirname);
 connectDB();
 
 app.use(cors());
@@ -74,11 +75,11 @@ app.use(
 // });
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "dist"))); // Adjust to serve the `dist` folder
+  app.use(express.static(path.join(__dirname, "client/dist"))); // Serve static files from dist
+  // console.log("===>", __dirname);
 
-  // Handle all other routes with the frontend's index.html
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "dist", "index.html"));
+    res.sendFile(path.join(__dirname, "client", "dist", "index.html")); // Serve index.html for all routes
   });
 }
 
