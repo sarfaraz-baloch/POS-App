@@ -66,11 +66,11 @@ app.use(
 );
 
 // / Serve static files from the React app (or any frontend build)
-app.use(express.static(path.join(__dirname, "./client/dist")));
+app.use(express.static(path.join(__dirname, "/client/dist")));
 
 // Catch-all route for serving the frontend
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./client", "dist", "index.html"));
+  res.sendFile(path.resolve(__dirname, "/client", "dist", "index.html"));
 });
 
 app.use("/api/item", require("./routes/itemRoute"));
