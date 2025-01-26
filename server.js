@@ -49,7 +49,10 @@ const loanRoutes = require("./routes/loanRoutes");
 dotenv.config();
 
 const app = express();
-// const __dirname = path.resolve();
+// const __dirname = path.resolve(); // Use this to check your working directory
+// console.log("Current Directory:", __dirname);
+// console.log("Static files path:", path.resolve(__dirname, "client", "dist"));
+// // const __dirname = path.resolve();
 // console.log(__dirname);
 connectDB();
 
