@@ -1,8 +1,8 @@
 {
-  "builds": [
+  "rewrites": [
     {
-      "src": "package.json",
-      "use": "@vercel/node"
+      "source": "/api/:path*",
+      "destination": "https://pos-app-production.up.railway.app/:path*"
     }
   ]
 }
