@@ -434,7 +434,7 @@ const HomePage = () => {
         });
 
         const { data } = await axios.get(
-          "https://pos-app-production.up.railway.app/api/categories"
+          "https://pos-app-production.up.railway.app/api/item/get-item"
         ); // Production API endpoint to fetch categories
         setCategories(data); // Set categories data in the state
 
