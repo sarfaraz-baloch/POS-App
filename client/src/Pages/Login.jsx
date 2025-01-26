@@ -46,7 +46,7 @@ const Login = () => {
   return (
     <div className="Register flex items-center justify-center flex-col  h-screen bg-gray-100">
       <div className="register-form">
-        <h1 className="text-3xl">MICROFINANCE APP</h1>
+        <h1 className="text-3xl">Microfinance App</h1>
         <h4 className="text-3xl">Login</h4>
 
         <Form layout="vertical" onFinish={handleSubmit}>
