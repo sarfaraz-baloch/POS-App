@@ -100,9 +100,4 @@ app.use("/api", loanRoutes); // This could be '/api/item' if you want it in that
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server Running on ${PORT}`.bgCyan.white.bold);
-  console.log(
-    "Serving static files from:",
-    path.join(__dirname, "client/dist")
-  );
-  console.log("Environment:", process.env.NODE_ENV);
 });
