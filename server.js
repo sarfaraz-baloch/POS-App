@@ -73,6 +73,10 @@ app.use(
 //   res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
 // });
 
+app.get("/", (req, res) => {
+  res.status(200).send("API is running...");
+});
+
 app.use("/api/item", require("./routes/itemRoute"));
 app.use("/api/user", require("./routes/userRoute"));
 app.use("/api/bill", require("./routes/billRoute"));
