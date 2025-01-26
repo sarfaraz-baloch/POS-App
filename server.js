@@ -79,7 +79,7 @@ if (process.env.NODE_ENV === "production") {
   // console.log("===>", __dirname);
 
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "dist", "index.html")); // Serve index.html for all routes
+    res.sendFile(path.join(__dirname, "client/dist", "index.html")); // Serve index.html for all routes
   });
 }
 
