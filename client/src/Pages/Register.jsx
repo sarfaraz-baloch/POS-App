@@ -6,14 +6,17 @@ import { useSelector, useDispatch } from "react-redux";
 const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const server = "pos-app-production.up.railway.app";
+  // const server = "pos-app-production.up.railway.app";
   const handleSubmit = async (values) => {
     try {
       dispatch({
         type: "SHOW_LOADING",
       });
 
-      await axios.post(`${server}/api/user/register`, values);
+      await axios.post(
+        `${process.env.REACT_APP_API_URL}/user/register`,
+        values
+      );
 
       message.success("User Registered Successfully");
       dispatch({

@@ -4,7 +4,7 @@ const apiUrl = process.env.REACT_APP_API_URL;
 
 export const fetchItems = async () => {
   try {
-    const response = await axios.get(`${apiUrl}/item`);
+    const response = await axios.get(`${apiUrl}`);
     console.log(response.data);
   } catch (error) {
     console.error("Error fetching items:", error);
