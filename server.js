@@ -73,9 +73,14 @@ app.use(
 //   res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
 // });
 
-app.get("/", (req, res) => {
-  res.status(200).send("API is running...");
-});
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "dist"))); // Adjust to serve the `dist` folder
+
+  // Handle all other routes with the frontend's index.html
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "dist", "index.html"));
+  });
+}
 
 app.use("/api/item", require("./routes/itemRoute"));
 app.use("/api/user", require("./routes/userRoute"));
