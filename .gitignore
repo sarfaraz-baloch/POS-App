@@ -32,3 +32,4 @@ dist-ssr/
 
 # Optional: Ignore test output directories (if applicable)
 # coverage/
+.vercel
